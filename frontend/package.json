@@ -4,7 +4,7 @@
   "description": "Frontend for ContextCleanse",
   "private": true,
   "engines": {
-    "node": ">=20.9.0"
+    "node": "^20.19.0 || ^22.13.0 || >=24"
   },
   "scripts": {
     "dev": "next dev",
