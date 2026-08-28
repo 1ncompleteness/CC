@@ -48,11 +48,12 @@ export const authOptions: NextAuthOptions = {
       id: "demo",
       name: "Demo Mode",
       credentials: {
-        demoUser: { label: "Demo User", type: "text", placeholder: "demo" }
+        username: { label: "Username", type: "text", placeholder: "demo" },
+        password: { label: "Password", type: "password", placeholder: "demo" },
       },
       async authorize(credentials) {
         // Demo mode authentication
-        if (credentials?.demoUser === "demo") {
+        if (credentials?.username === "demo" && credentials?.password === "demo") {
           return {
             id: "demo-user",
             email: "demo@contextcleanse.com",

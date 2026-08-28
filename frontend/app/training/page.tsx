@@ -164,7 +164,7 @@ export default function TrainingPage() {
   const [modelsTraining, setModelsTraining] = useState(false);
   const [cvResults, setCvResults] = useState<Record<string, CrossValidationResult> | null>(null);
   const [modelResults, setModelResults] = useState<ComparisonResults | null>(null);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [crossValidating, setCrossValidating] = useState(false);
 
   const [statistics, setStatistics] = useState<Statistics | null>(null);
@@ -246,7 +246,7 @@ export default function TrainingPage() {
   const [lastAutoTrainingTime, setLastAutoTrainingTime] = useState<Date | null>(null);
   const [selectedModel, setSelectedModel] = useState<string>('xgboost_rl');
   const [selectedAnalysisModel, setSelectedAnalysisModel] = useState<string>('all'); // New state for Training Analysis model selection
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [predictionResult, setPredictionResult] = useState<{
     is_spam: boolean;
     confidence: number;
@@ -257,10 +257,10 @@ export default function TrainingPage() {
   const [analysisRefreshTrigger, setAnalysisRefreshTrigger] = useState<number>(0); // Force refresh trigger for Training Analysis
 
   // RL Optimization tracking for best model with baseline management
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [isRLOptimized, setIsRLOptimized] = useState<boolean>(false);
   const [rlOptimizationCount, setRLOptimizationCount] = useState<number>(0);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const [rlEnhancedMetrics, setRLEnhancedMetrics] = useState<ModelMetrics | null>(null);
   const [baselineMetrics, setBaselineMetrics] = useState<ModelMetrics | null>(null); // Store original baseline
 
@@ -1066,7 +1066,7 @@ export default function TrainingPage() {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const trainModelsWithResourceManagement = async () => {
     console.log('🚀 Starting trainModelsWithResourceManagement...');
     
@@ -1322,7 +1322,7 @@ export default function TrainingPage() {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const performCrossValidation = async (modelName: string) => {
     try {
       setCrossValidating(true);
@@ -1375,7 +1375,7 @@ export default function TrainingPage() {
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line no-unused-vars
   const predictSpam = async () => {
     try {
       // Generate sample features for demo

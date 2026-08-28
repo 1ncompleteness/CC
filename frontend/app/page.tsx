@@ -131,7 +131,7 @@ export default function HomePage() {
     setLoading('mock-data')
     
     try {
-      const result = await signIn('mock-data', {
+      const result = await signIn('demo', {
         username: mockCredentials.username,
         password: mockCredentials.password,
         callbackUrl: '/dashboard',
