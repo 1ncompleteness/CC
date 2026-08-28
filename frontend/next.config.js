@@ -9,7 +9,11 @@ const nextConfig = {
   
   // Image optimization
   images: {
-    domains: ['lh3.googleusercontent.com', 'graph.microsoft.com', 'appleid.apple.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: 'graph.microsoft.com' },
+      { protocol: 'https', hostname: 'appleid.apple.com' },
+    ],
     unoptimized: process.env.NODE_ENV === 'development',
   },
   

@@ -132,7 +132,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 docker builder prune -af
 
 # Clear Next.js cache specifically
-docker run --rm -v $(pwd)/frontend:/app -w /app node:22-alpine rm -rf .next/cache
+docker run --rm -v $(pwd)/frontend:/app -w /app node:26-alpine rm -rf .next/cache
 ```
 
 #### Permission Issues

@@ -1,4 +1,9 @@
-# Dependency Updates Summary - January 2025
+# Dependency Updates Summary (historical January 2025 update)
+
+> The historical update details below are superseded by the current
+> pins in `frontend/package.json`, `backend/requirements.txt`, and
+> `docker-compose.yml`. The current stack uses Next.js 16, Node.js 26,
+> Python 3.14, and the latest compatible frontend and backend dependencies.
 
 ## Overview
 Successfully updated both backend and frontend dependencies to their latest stable versions using MCP Context7 for documentation research and Desktop Commander for execution.

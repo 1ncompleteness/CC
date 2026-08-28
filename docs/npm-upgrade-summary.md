@@ -1,4 +1,8 @@
-# npm 11.5.2 Upgrade Summary for ContextCleanse
+# npm Upgrade Summary for ContextCleanse
+
+> This document records the historical npm 11.5.2 migration. The current
+> frontend toolchain uses Node.js 26 with npm 12.0.2; see
+> `frontend/package.json` and `frontend/Dockerfile` for the active configuration.
 
 ## 🚀 **Upgrade Completed Successfully**
 

@@ -2,9 +2,9 @@
 
 ## Requirements
 
-- **Python 3.11+** (required)
+- **Python 3.12+** (required)
 - PostgreSQL 16+ with pgvector extension
-- Redis 7+
+- Redis 8+
 
 ## Quick Start
 
@@ -82,7 +82,7 @@ alembic upgrade head
 
 ## Docker
 
-The backend runs in a Docker container with Python 3.11:
+The backend runs in a Docker container with Python 3.14:
 
 ```bash
 docker build -t contextcleanse-backend .

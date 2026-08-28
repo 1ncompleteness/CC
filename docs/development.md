@@ -6,8 +6,8 @@
 
 - **Docker & Docker Compose**: Latest version
 - **Git**: For version control
-- **Node.js**: 18+ (for local frontend development)
-- **Python**: 3.11+ (required for backend development)
+- **Node.js**: 20.9+ (for local frontend development)
+- **Python**: 3.12+ (required for backend development)
 
 ### 1. Clone and Setup
 
@@ -62,7 +62,7 @@ docker-compose down
 ```
 Context Cleanse/
 ├── backend/          # FastAPI + ML models + OAuth
-├── frontend/         # Next.js 14 dashboard
+├── frontend/         # Next.js 16 dashboard
 ├── ml/              # ML training & processing
 ├── database/        # PostgreSQL + pgvector setup
 ├── docker/          # Container configurations
@@ -73,8 +73,8 @@ Context Cleanse/
 
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| **Backend API** | FastAPI, Python 3.11+ | REST API, ML inference, OAuth |
-| **Frontend** | Next.js 14, TypeScript, Tailwind | Admin dashboard, user interface |
+| **Backend API** | FastAPI, Python 3.12+ | REST API, ML inference, OAuth |
+| **Frontend** | Next.js 16, TypeScript, Tailwind CSS 4 | Admin dashboard, user interface |
 | **Database** | PostgreSQL + pgvector | Email storage, embeddings |
 | **ML Models** | scikit-learn, ONNX, SBERT | Spam detection, embeddings |
 | **LLM** | Ollama (local) | RAG assistant responses |
