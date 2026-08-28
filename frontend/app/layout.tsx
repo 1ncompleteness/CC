@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import SessionProvider from '../components/providers/SessionProvider'
 import { NotificationProvider } from './contexts/NotificationContext'
@@ -10,8 +9,6 @@ import { AppNavigationProvider } from './contexts/AppNavigationContext'
 import { Toaster } from 'react-hot-toast'
 import PagePreloader from './components/PagePreloader'
 import ServerWarmup from './components/ServerWarmup'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'ContextCleanse',
@@ -31,7 +28,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
+      <body className="font-sans" suppressHydrationWarning={true}>
         <NotificationProvider>
           <SessionProvider>
             <SidebarProvider>

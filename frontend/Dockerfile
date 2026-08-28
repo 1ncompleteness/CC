@@ -69,6 +69,7 @@ RUN npm ci \
 
 # Copy source code
 COPY next.config.js ./
+COPY proxy.ts ./
 COPY tsconfig.json ./
 COPY tailwind.config.js ./
 COPY postcss.config.js ./
@@ -122,6 +123,7 @@ RUN npm ci \
 
 # Copy configuration files
 COPY next.config.js ./
+COPY proxy.ts ./
 COPY tsconfig.json ./
 COPY tailwind.config.js ./
 COPY postcss.config.js ./
@@ -205,6 +207,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/app ./app
 COPY --from=builder --chown=nextjs:nodejs /app/lib ./lib
 COPY --from=builder --chown=nextjs:nodejs /app/components ./components
 COPY --from=builder --chown=nextjs:nodejs /app/types ./types
+COPY --from=builder --chown=nextjs:nodejs /app/proxy.ts ./proxy.ts
 
 # Copy configuration files
 COPY --from=builder --chown=nextjs:nodejs /app/next.config.js ./next.config.js
