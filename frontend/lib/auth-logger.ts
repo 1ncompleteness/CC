@@ -149,9 +149,8 @@ export class BackendAvailabilityLogger {
     const emoji = userImpact === 'blocked' ? '🔴' : 
                  userImpact === 'degraded' ? '🟡' : '🟢';
 
-    const logMethod = severity as 'error' | 'warn' | 'info';
-
-    logger[logMethod](`${emoji} Backend service unavailable - ${this.getUserImpactDescription(userImpact)}`, {
+    const message = `${emoji} Backend service unavailable - ${this.getUserImpactDescription(userImpact)}`;
+    const logContext = {
       component: 'BackendConnectivity',
       service,
       endpoint,
@@ -167,7 +166,15 @@ export class BackendAvailabilityLogger {
       serviceHealth: 'degraded',
       automaticRetry: retryAttempt < maxRetries,
       escalationNeeded: retryAttempt >= maxRetries
-    });
+    };
+
+    if (severity === 'error') {
+      logger.error(message, undefined, logContext);
+    } else if (severity === 'warn') {
+      logger.warn(message, logContext);
+    } else {
+      logger.info(message, logContext);
+    }
 
     // Log performance impact
     if (responseTime) {

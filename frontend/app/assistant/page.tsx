@@ -966,7 +966,7 @@ Please provide a helpful response based on the email context provided.`;
           <div className="p-4 border-b border-gray-600">
             <OllamaModelManager
               onModelChange={(modelName) => {
-                setSelectedModel(modelName);
+                setOllamaStatus(prev => ({ ...prev, model: modelName }));
                 setShowModelManager(false);
                 checkOllamaStatus(); // Refresh status after model change
               }}

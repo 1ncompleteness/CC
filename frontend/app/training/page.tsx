@@ -122,8 +122,9 @@ interface CrossValidationResult {
   cv_scores: number[];
   mean_score: number;
   std_score: number;
-  cv_method: string;  // "LOOCV" or "K-Fold"
-  total_iterations: number;  // Number of CV iterations
+  cv_method?: string;  // "LOOCV" or "K-Fold"
+  total_iterations?: number;  // Number of CV iterations
+  k_folds?: number;
 }
 
 interface RLOptimizationData {
@@ -1191,7 +1192,7 @@ export default function TrainingPage() {
     setLoadingProgress(prev => ({ ...prev, training: 100 }));
   };
 
-  const compareModels = async (): Promise<{ bestModel: string; bestMetrics: ModelMetrics; results: ComparisonResults } | null> => {
+  const compareModels = async (): Promise<{ bestModel: string; bestMetrics: ModelMetrics; results: Record<string, ModelMetrics> } | null> => {
     console.log('🔍 compareModels started - current modelResults:', modelResults);
     
     try {
@@ -1259,7 +1260,7 @@ export default function TrainingPage() {
         return {
           bestModel: bestModelKey,
           bestMetrics: modelResults[bestModelKey] as ModelMetrics,
-          results: correctedResults
+          results: correctedResults.results
         };
         
       } else {
@@ -1802,7 +1803,7 @@ export default function TrainingPage() {
         });
         
         // ✅ ADD STAGGERED DELAY: Prevent notification spam and improve UX
-        await new Promise(resolve => setTimeout(resolve, 200 * (index + 1))); 
+        await new Promise(resolve => setTimeout(resolve, 200 * modelIndex));
         
         // Additional detailed metrics notification for Events sidebar visibility
         if (metricChanges && Object.values(metricChanges).some(change => Math.abs(change) > 0.01)) {
@@ -1827,7 +1828,10 @@ export default function TrainingPage() {
               model_name: `${modelDisplayName} Performance`,
               message: `${changeMessage} compared to previous training`,
               timestamp: new Date(endTime.getTime() + 1000), // Slight delay for ordering
-              metrics: metricChanges
+              metrics: {
+                ...newMetrics,
+                metric_changes: metricChanges
+              }
             });
           }
         }

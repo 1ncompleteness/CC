@@ -1,8 +1,12 @@
-import NextAuth from "next-auth"
-import { JWT } from "next-auth/jwt"
+import { DefaultSession } from "next-auth"
 
 declare module "next-auth" {
   interface Session {
+    user: {
+      id?: string
+      sessionId?: string
+      provider?: 'google' | 'apple' | 'microsoft'
+    } & DefaultSession["user"]
     accessToken?: string
     refreshToken?: string
     error?: string

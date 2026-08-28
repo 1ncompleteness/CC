@@ -205,7 +205,7 @@ export function BackendUnavailableError({
             {service === 'email_sync' && 'Email synchronization service is unavailable.'}
             
             {fallbackData ? (
-              <> We're using {fallbackData.type === 'cached' ? 'cached data' : 
+              <> We&apos;re using {fallbackData.type === 'cached' ? 'cached data' :
                              fallbackData.type === 'local' ? 'local processing' : 'backup systems'} 
                  to maintain functionality.</>
             ) : (
@@ -348,7 +348,7 @@ export function BackendUnavailableError({
       {/* Help & Status */}
       <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
         <p>
-          💡 <strong>What's happening:</strong> Our {service.replace('_', ' ')} is experiencing temporary issues. 
+          💡 <strong>What&apos;s happening:</strong> Our {service.replace('_', ' ')} is experiencing temporary issues.
           {fallbackData ? ' Your work continues uninterrupted using backup systems.' : ' We\'re working to restore full functionality.'}
         </p>
         <p className="mt-1">

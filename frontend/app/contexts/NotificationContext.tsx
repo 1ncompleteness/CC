@@ -17,6 +17,12 @@ export interface BaseNotification {
     cpu_percent: number;
     memory_mb: number;
   };
+  error?: {
+    message?: string;
+    type?: string;
+    backend_available?: boolean;
+    recovery_action?: string;
+  };
 }
 
 // Training metrics interface
@@ -29,11 +35,13 @@ export interface ModelMetrics {
   training_time?: number;
   cv_score?: number;
   std_score?: number;
+  models_trained?: number;
+  best_model?: string;
 }
 
 // Training notification interface
 export interface TrainingNotification extends BaseNotification {
-  type: 'training_start' | 'training_complete' | 'training_error' | 'auto_training_init' | 'model_training_start' | 'model_training_complete' | 'model_classification_start' | 'model_classification_complete' | 'backend_info';
+  type: 'training_start' | 'training_complete' | 'training_error' | 'auto_training_init' | 'auto_training_complete' | 'model_training_start' | 'model_training_complete' | 'model_classification_start' | 'model_classification_complete' | 'backend_info';
   metrics?: ModelMetrics & {
     previous_metrics?: ModelMetrics;
     metric_changes?: {
@@ -47,7 +55,7 @@ export interface TrainingNotification extends BaseNotification {
 
 // RL notification interface
 export interface RLNotification extends BaseNotification {
-  type: 'rl_optimization_start' | 'rl_optimization_complete' | 'rl_error' | 'email_fetch_start' | 'email_fetch_complete' | 'email_fetch_error' | 'model_classification_start' | 'model_classification_complete';
+  type: 'rl_optimization_start' | 'rl_optimization_complete' | 'rl_error' | 'email_fetch_start' | 'email_fetch_complete' | 'email_fetch_success' | 'email_fetch_error' | 'feedback_success' | 'feedback_error' | 'model_classification_start' | 'model_classification_complete';
   emailId?: string;
   improvements?: {
     accuracyGain: number;

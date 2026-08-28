@@ -38,7 +38,7 @@ export function AuthError({
   useEffect(() => {
     // Calculate session statistics
     const now = new Date();
-    const sessionStart = session?.user ? new Date(session.expires).getTime() - (24 * 60 * 60 * 1000) : now;
+    const sessionStart = session?.user ? new Date(session.expires).getTime() - (24 * 60 * 60 * 1000) : now.getTime();
     const duration = Math.round((now.getTime() - sessionStart) / (1000 * 60));
     
     const tokenAge = lastActivity ? 
@@ -62,7 +62,7 @@ export function AuthError({
       action,
       endpoint
     });
-  }, [session, tokenType, provider, lastActivity, action, endpoint, tokenAge]);
+  }, [session, tokenType, provider, lastActivity, action, endpoint]);
 
   const handleSignOut = async () => {
     setIsSigningOut(true);
