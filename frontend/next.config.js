@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable standalone output for Docker production builds  
-  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
+  output: process.env.VERCEL ? undefined : process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
   reactStrictMode: true,
   
   // Disable dev indicators (dev tools UI)
