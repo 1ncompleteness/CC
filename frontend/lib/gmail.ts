@@ -5,6 +5,7 @@ export interface EmailData {
   from: string
   subject: string
   preview: string
+  body?: string
   date: string
   isRead: boolean
   threadId: string

@@ -123,7 +123,7 @@ export default function DashboardPage() {
               email: {
                 subject: email.subject,
                 from: email.from,
-                body: email.preview || '',
+                body: email.preview || email.body || '',
                 snippet: email.preview
               },
               model: selectedModel
