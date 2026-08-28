@@ -7,6 +7,7 @@ import globals from 'globals';
 const parser = {
   meta: nextParser.meta,
   parse: nextParser.parse,
+  parseForESLint: nextParser.parseForESLint,
 };
 
 export default defineConfig([
