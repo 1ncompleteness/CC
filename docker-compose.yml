@@ -369,7 +369,7 @@ services:
 
   # Optional: Nginx reverse proxy for production
   nginx:
-    image: nginx:1.30.4-alpine
+    image: nginx:1.31.4-alpine
     container_name: cc_nginx
     
     # Port configuration
