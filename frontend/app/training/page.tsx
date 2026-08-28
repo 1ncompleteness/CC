@@ -1803,7 +1803,7 @@ export default function TrainingPage() {
         });
         
         // ✅ ADD STAGGERED DELAY: Prevent notification spam and improve UX
-        await new Promise(resolve => setTimeout(resolve, 200 * modelIndex));
+        await new Promise(resolve => setTimeout(resolve, 200 * Math.max(1, modelIndex)));
         
         // Additional detailed metrics notification for Events sidebar visibility
         if (metricChanges && Object.values(metricChanges).some(change => Math.abs(change) > 0.01)) {
