@@ -113,7 +113,7 @@ export default function DashboardPage() {
   // Classify emails using the backend ML service
   const classifyEmails = async (emailsData: EmailData[]): Promise<ExtendedEmailData[]> => {
     try {
-      const classificationPromises = emailsData.map(async (email) => {
+      const classificationPromises = emailsData.map(async (email): Promise<ExtendedEmailData> => {
         try {
           // Call backend to classify each email
           const response = await fetch('/api/classify-email', {
@@ -896,8 +896,6 @@ export default function DashboardPage() {
               </>
             )}
                         </div>
-                        </div>
-                        </div>
 
         {/* Email Details Modal */}
         {showEmailModal && selectedEmail && (
@@ -1095,7 +1093,7 @@ export default function DashboardPage() {
                             <div className="flex items-center justify-between pb-2 border-b border-gray-700">
                               <span className="text-xs text-yellow-400 font-medium">Preview Content</span>
                               <span className="text-xs text-gray-400">
-                                Click "Show Full Content" for complete email
+                                Click &quot;Show Full Content&quot; for complete email
                               </span>
                             </div>
                             <div className="text-gray-300 whitespace-pre-wrap text-sm leading-relaxed">
@@ -1160,5 +1158,6 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+    </div>
   );
-} 
+}

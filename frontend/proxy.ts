@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { withAuth } from 'next-auth/middleware';
 
 export default withAuth(
-  function middleware(req: NextRequest) {
+  function proxy(req: NextRequest) {
     const { pathname } = req.nextUrl;
 
     // Redirect all main page routes to /main to use our SPA approach

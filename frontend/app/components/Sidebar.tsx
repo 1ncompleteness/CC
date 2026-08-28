@@ -178,7 +178,7 @@ export default function Sidebar() {
                     <LoadingSpinner size="h-3 w-3" />
                   </div>
                 )}
-              </Link>
+              </button>
             );
           })}
         </nav>
@@ -319,18 +319,18 @@ export default function Sidebar() {
           {bottomNavigation.map((item) => {
             const Icon = item.icon;
             return (
-              <Link
+              <button
                 key={item.name}
-                href={item.href}
-                className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  isActive(item.href)
+                onClick={() => handleNavigation(item.page)}
+                className={`flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-colors w-full text-left ${
+                  isPageActive(item.page)
                     ? 'bg-white dark:bg-black text-black dark:text-white border border-gray-300 dark:border-gray-600'
                     : 'text-black dark:text-white hover:bg-white dark:hover:bg-black hover:text-black dark:hover:text-white'
                 }`}
               >
                 <Icon className="h-5 w-5 mr-3" />
                 {item.name}
-              </Link>
+              </button>
             );
           })}
         </div>

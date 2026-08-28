@@ -67,7 +67,7 @@ Image Sizes:    Backend: 380MB, Frontend: 220MB
 ### **Backend Multi-Stage Architecture**
 ```mermaid
 graph TD
-    A[python:3.11-slim] --> B[deps stage]
+    A[python:3.14-slim] --> B[deps stage]
     B --> C[Install system deps with cache]
     B --> D[Install Python deps with cache]
     A --> E[app stage]
@@ -79,7 +79,7 @@ graph TD
 ### **Frontend Multi-Stage Architecture**
 ```mermaid
 graph TD
-    A[node:22-alpine] --> B[base stage + npm 11.5.2]
+    A[node:26-alpine] --> B[base stage + npm 12.0.2]
     B --> C[deps stage - prod dependencies]
     B --> D[builder stage - build app]
     B --> E[development stage]
@@ -298,9 +298,10 @@ docker buildx du
 
 ---
 
-## 📦 **npm 11.5.2 Upgrade Benefits**
+## 📦 **Historical npm 11.5.2 Upgrade Benefits**
 
-ContextCleanse now uses **npm 11.5.2** for enhanced performance and security:
+The historical npm 11.5.2 migration provided enhanced performance and security.
+The current frontend toolchain uses npm 12.0.2:
 
 ### **✅ Performance Improvements**
 - **40% faster installs** with improved dependency resolution

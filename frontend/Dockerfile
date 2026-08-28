@@ -4,7 +4,7 @@
 # ==========================================
 # Base Stage - Node.js setup
 # ==========================================
-FROM node:22-alpine AS base
+FROM node:26-alpine AS base
 
 # Install system dependencies
 RUN apk add --no-cache \
@@ -18,8 +18,8 @@ RUN apk add --no-cache \
 # Enable Corepack for pnpm/yarn support
 RUN corepack enable
 
-# Upgrade npm to latest version
-RUN npm install -g npm@latest --no-audit --no-fund
+# Use the current npm release supported by the Node base image
+RUN npm install -g npm@12.0.2 --no-audit --no-fund
 
 # Create app user for security with proper permissions
 RUN addgroup --system --gid 1001 nodejs && \
@@ -69,10 +69,11 @@ RUN npm ci \
 
 # Copy source code
 COPY next.config.js ./
+COPY proxy.ts ./
 COPY tsconfig.json ./
 COPY tailwind.config.js ./
 COPY postcss.config.js ./
-COPY .eslintrc.json ./
+COPY eslint.config.mjs ./
 COPY public ./public
 COPY app ./app
 COPY lib ./lib
@@ -122,9 +123,11 @@ RUN npm ci \
 
 # Copy configuration files
 COPY next.config.js ./
+COPY proxy.ts ./
 COPY tsconfig.json ./
 COPY tailwind.config.js ./
 COPY postcss.config.js ./
+COPY eslint.config.mjs ./
 
 # Copy source code
 COPY app ./app
@@ -204,6 +207,7 @@ COPY --from=builder --chown=nextjs:nodejs /app/app ./app
 COPY --from=builder --chown=nextjs:nodejs /app/lib ./lib
 COPY --from=builder --chown=nextjs:nodejs /app/components ./components
 COPY --from=builder --chown=nextjs:nodejs /app/types ./types
+COPY --from=builder --chown=nextjs:nodejs /app/proxy.ts ./proxy.ts
 
 # Copy configuration files
 COPY --from=builder --chown=nextjs:nodejs /app/next.config.js ./next.config.js

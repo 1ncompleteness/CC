@@ -27,10 +27,10 @@ export function BackgroundInitializationProvider({ children }: BackgroundInitPro
   const { addNotification } = useNotifications();
   const { updateDashboardLoading, updateAssistantLoading, updateTrainingLoading, addBackgroundProcess, removeBackgroundProcess } = usePageLoading();
 
-  const [initializationStatus, setInitializationStatus] = useState({
-    dashboard: 'idle' as const,
-    assistant: 'idle' as const,
-    training: 'idle' as const,
+  const [initializationStatus, setInitializationStatus] = useState<BackgroundInitContextType['initializationStatus']>({
+    dashboard: 'idle',
+    assistant: 'idle',
+    training: 'idle',
   });
 
   // Generate unique notification ID

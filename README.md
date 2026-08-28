@@ -29,8 +29,8 @@ Before setting up ContextCleanse, ensure you have:
 
 - **Git** - For version control
 - **Docker & Docker Compose** - For containerized deployment
-- **Node.js 18+** - For frontend development  
-- **Python 3.11+** - For backend development
+- **Node.js 20.9+** - For frontend development
+- **Python 3.12+** - For backend development
 - **Ollama** - For hosting LLMs
 
 ---
@@ -40,7 +40,7 @@ Before setting up ContextCleanse, ensure you have:
 ```
 ContextCleanse/
 ├── 🖥️  frontend/                 # Next.js React SPA Frontend
-│   ├── app/                      # App Router (Next.js 14)
+│   ├── app/                      # App Router (Next.js 16)
 │   │   ├── api/                  # API Routes
 │   │   │   ├── classify-email/   # Email classification endpoint
 │   │   │   ├── assistant/        # Assistant API endpoints
@@ -247,7 +247,7 @@ graph TD
 ## 🏗️ **Technical Stack**
 
 ### **Frontend Technologies**
-- **Framework**: Next.js 14 (App Router) with Single Page Application architecture
+- **Framework**: Next.js 16 (App Router) with Single Page Application architecture
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS with custom scrollbar styling
 - **UI Components**: Lucide React icons
@@ -257,12 +257,12 @@ graph TD
 - **Navigation**: State-based routing with zero reload times
 
 ### **Backend Technologies**
-- **Framework**: FastAPI (Python 3.9+)
+- **Framework**: FastAPI (Python 3.12+)
 - **ML Libraries**: 
-  - XGBoost 1.7+
-  - Scikit-learn 1.3+
-  - NumPy 1.24+
-  - Pandas 2.0+
+  - XGBoost 3.4+
+  - Scikit-learn 1.9+
+  - NumPy 2.5+
+  - Pandas 3.0+
 - **Database**: PostgreSQL with pgvector
 - **Caching**: Redis
 - **Authentication**: JWT tokens
@@ -271,7 +271,7 @@ graph TD
 ### **Infrastructure**
 - **Containerization**: Docker + Docker Compose
 - **Database**: PostgreSQL 16 with vector extension
-- **Caching**: Redis 7
+- **Caching**: Redis 8
 - **Networking**: Custom Docker network
 - **Environment**: Production-ready configuration
 
@@ -281,8 +281,8 @@ graph TD
 
 ### **Prerequisites**
 - Docker & Docker Compose
-- Node.js 18+ (for local development)
-- Python 3.9+ (for local development)
+- Node.js 20.9+ (for local development)
+- Python 3.12+ (for local development)
 - Gmail API credentials (for email integration)
 
 ### **Quick Start**

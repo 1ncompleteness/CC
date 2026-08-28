@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Enable standalone output for Docker production builds  
-  output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
+  output: process.env.VERCEL ? undefined : process.env.NODE_ENV === 'production' ? 'standalone' : undefined,
   reactStrictMode: true,
   
   // Disable dev indicators (dev tools UI)
@@ -9,7 +9,11 @@ const nextConfig = {
   
   // Image optimization
   images: {
-    domains: ['lh3.googleusercontent.com', 'graph.microsoft.com', 'appleid.apple.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'lh3.googleusercontent.com' },
+      { protocol: 'https', hostname: 'graph.microsoft.com' },
+      { protocol: 'https', hostname: 'appleid.apple.com' },
+    ],
     unoptimized: process.env.NODE_ENV === 'development',
   },
   

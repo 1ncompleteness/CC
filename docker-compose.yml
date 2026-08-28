@@ -1,7 +1,7 @@
 services:
   # PostgreSQL Database with pgvector extension - Production-optimized
   db:
-    image: pgvector/pgvector:pg16
+    image: pgvector/pgvector:0.8.6-pg16-trixie
     container_name: cc_db
     
     # Environment configuration with fallback defaults
@@ -306,7 +306,7 @@ services:
 
   # Redis Cache - Enhanced for production
   redis:
-    image: redis:8-alpine
+    image: redis:8.8.2-alpine
     container_name: cc_redis
     
     # Port configuration
@@ -369,7 +369,7 @@ services:
 
   # Optional: Nginx reverse proxy for production
   nginx:
-    image: nginx:alpine
+    image: nginx:1.30.4-alpine
     container_name: cc_nginx
     
     # Port configuration
