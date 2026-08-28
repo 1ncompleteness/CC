@@ -896,8 +896,6 @@ export default function DashboardPage() {
               </>
             )}
                         </div>
-                        </div>
-                        </div>
 
         {/* Email Details Modal */}
         {showEmailModal && selectedEmail && (
@@ -1160,5 +1158,6 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
+    </div>
   );
-} 
+}
