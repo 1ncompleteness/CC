@@ -67,7 +67,18 @@ class ContextCleanseLogger {
   }
 
   private generateSessionId(): string {
-    return `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    let randomPart: string;
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      randomPart = crypto.randomUUID().replace(/-/g, '').substring(0, 9);
+    } else if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+      randomPart = Array.from(crypto.getRandomValues(new Uint8Array(6)))
+        .map(b => b.toString(16).padStart(2, '0'))
+        .join('');
+    } else {
+      // Last-resort fallback for very old environments
+      randomPart = Math.random().toString(36).substring(2, 11);
+    }
+    return `session_${Date.now()}_${randomPart}`;
   }
 
   private getTimestamp(): string {
