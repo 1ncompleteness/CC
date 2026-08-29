@@ -76,7 +76,7 @@ class ContextCleanseLogger {
         .join('');
     } else {
       // Last-resort fallback for very old environments
-      randomPart = Math.random().toString(36).substring(2, 11);
+      throw new Error('Secure random number generation is unavailable');
     }
     return `session_${Date.now()}_${randomPart}`;
   }
