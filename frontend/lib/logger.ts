@@ -445,7 +445,18 @@ export async function loggedAPICall<T>(
 ): Promise<T> {
   const startTime = performance.now();
   const method = options.method || 'GET';
-  const requestId = `req_${Date.now()}_${Math.random().toString(36).substr(2, 6)}`;
+  let reqRandom: string;
+  const secureCrypto = typeof crypto !== 'undefined' ? crypto : undefined;
+  if (secureCrypto?.randomUUID) {
+    reqRandom = secureCrypto.randomUUID().replace(/-/g, '').substring(0, 6);
+  } else if (secureCrypto?.getRandomValues) {
+    reqRandom = Array.from(secureCrypto.getRandomValues(new Uint8Array(3)))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('');
+  } else {
+    throw new Error('Secure random number generation is unavailable');
+  }
+  const requestId = `req_${Date.now()}_${reqRandom}`;
 
   // Log request start
   logger.debug(`Starting API call: ${method} ${url}`, {
